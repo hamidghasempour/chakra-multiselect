@@ -1,11 +1,12 @@
-import {
-  useMultiStyleConfig,
+import {   
   usePopper,
   UsePopperProps,
   UsePopperReturn,
-  useStyles,
-} from '@chakra-ui/react'
-import { EventKeys } from '@chakra-ui/utils'
+ } from '@chakra-ui/popper'
+
+//import { EventKeys } from '@chakra-ui/utils'
+import { useStyles, useMultiStyleConfig, SystemStyleObject } from '@chakra-ui/system'
+
 import { createContext, mergeRefs } from '@chakra-ui/react-utils'
 import {
   useEffect,
@@ -16,6 +17,14 @@ import {
   MutableRefObject,
 } from 'react'
 import computeScrollIntoView from 'compute-scroll-into-view'
+
+import {
+  //useMultiStyleConfig,
+  //useStyles,
+  EventKeys,
+} from './chakra-ui-v2'
+
+
 export interface Option {
   label: string
   value: string | number
@@ -1056,9 +1065,18 @@ export function useClearButton(props: any = {}) {
   }
 }
 
+export type SelectedItemType = {
+  key: string;
+  onClick: () => void;
+  __css: SystemStyleObject;
+  value: any;
+  label: string;
+  // Add other properties as needed
+};
+
 export function useSelectedItem(
   props: { value: any; label: string; key?: string } = {} as any
-) {
+) : SelectedItemType{
   const { removeValue } = useSelectedContext()
   const styles = useStyles()
 

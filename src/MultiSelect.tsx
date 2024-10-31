@@ -1,23 +1,26 @@
+//import { forwardRef } from 'react';
 import {
-  HTMLChakraProps,
+  //HTMLChakraProps,
   Input,
   Box,
   IconButton,
-  chakra,
+  //chakra,
   HStack,
-  omitThemingProps,
-  useMultiStyleConfig,
-  StylesProvider,
-  forwardRef,
-  Tag,
+  //forwardRef,
   TagLabel,
-  TagCloseButton,
-  TagProps,
+  //TagCloseButton,
+  //TagProps,
   StackProps,
-  useStyles,
   BoxProps,
   IconButtonProps,
 } from '@chakra-ui/react'
+
+import {
+  omitThemingProps,
+} from '@chakra-ui/styled-system'
+
+import { useStyles, useMultiStyleConfig, StylesProvider } from '@chakra-ui/system'
+
 import {
   FC,
   JSXElementConstructor,
@@ -51,6 +54,27 @@ import {
   useId,
   SelectIdProvider,
 } from './use-select'
+
+import { HTMLChakraComponents, forwardRef } from '@chakra-ui/system'
+
+import {
+  // useMultiStyleConfig,
+  // StylesProvider,
+  // useStyles,
+  HTMLChakraProps,
+  TagProps,
+  //forwardRef,
+  ChakraFactory
+} from './chakra-ui-v2'
+
+// export declare function forwardRef<Props extends object, Component extends As>(component: React.ForwardRefRenderFunction<any, RightJoinProps<PropsOf<Component>, Props> & {
+//   as?: As;
+// }>): ComponentWithAs<Component, Props>;  
+
+declare const chakra: ChakraFactory & HTMLChakraComponents;
+
+import { Tag } from './tag'
+
 
 // @see https://github.com/chakra-ui/chakra-ui/issues/140
 
@@ -206,11 +230,12 @@ export const SelectOptionLabel = memo<
   <HStack justifyContent='space-between' w='full'>
     <Box>{label}</Box>
     {!!created && (
-      <Tag flexShrink={0}>
-        <TagLabel fontSize='xs' fontWeight='bold'>
-          New
-        </TagLabel>
-      </Tag>
+      // <Tag flexShrink={0}>
+      //   <TagLabel fontSize='xs' fontWeight='bold'>
+      //     New
+      //   </TagLabel>
+      // </Tag>
+      <></>
     )}
   </HStack>
 ))
@@ -455,7 +480,7 @@ export const SelectedItem = memo<SelectedItemProps>(
         role='listitem'
       >
         <TagLabel>{label || value}</TagLabel>
-        <TagCloseButton onClick={onClick} />
+        {/* <TagCloseButton onClick={onClick} /> */}
       </Tag>
     )
   }
